@@ -36,6 +36,6 @@ app.use("/api/task", routertask);
 app.use((req, res, next) => {
   res.send("not found");
 });
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`server running on port: ${process.env.PORT}`);
 });
