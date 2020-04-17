@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-sm navbar-default bg-default">
+  <button
+    class="navbar-toggler d-lg-none"
+    type="button"
+    data-toggle="collapse"
+    data-target="#collapsibleNavId"
+    aria-controls="collapsibleNavId"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item mr-5 my-3">
+        <a><i class="fas fa-tasks"></i> Task Mangement </a>
+      </li>
+      <li
+        *ngIf="userservice.isLogedin()"
+        [routerLinkActive]="['active']"
+        class="nav-item"
+      >
+        <a class="nav-link btn btn-dark my-1" [routerLink]="['/main']"
+          ><i class="fas fa-home"></i> Task
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li
+        *ngIf="!userservice.isLogedin()"
+        [routerLinkActive]="['active']"
+        class="nav-item"
+      >
+        <a
+          class="nav-link btn btn-secondary my-3 mr-3"
+          [routerLink]="['/login']"
+        >
+          <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+      </li>
+      <li
+        *ngIf="!userservice.isLogedin()"
+        [routerLinkActive]="['active']"
+        class="nav-item"
+      >
+        <a class="nav-link btn btn-info my-3" [routerLink]="['/register']"
+          >Register
+        </a>
+      </li>
+      <li *ngIf="userservice.isLogedin()" class="nav-item mr-5 my-4">
+        <a>Welcome, {{ name | titlecase }} </a>
+      </li>
+      <li *ngIf="userservice.isLogedin()" class="nav-item">
+        <a
+          (click)="lOGOUT()"
+          style="cursor: pointer; color: white;"
+          class="nav-link btn btn-danger my-3"
+        >
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
