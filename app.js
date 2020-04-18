@@ -8,7 +8,10 @@ const routertask = require("./routes/task.router");
 const passport = require("passport");
 const path = require("path");
 const app = express();
-
+const port = process.env.PORT || 3000;
+const MONGODB_URI =
+  "mongodb+srv://houssem:houssem12345@cluster0-ctbj2.mongodb.net/test?retryWrites=true&w=majority";
+const SECRET = "kfjngiurhguioghtiou";
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -36,6 +39,6 @@ app.use("/api/task", routertask);
 app.use((req, res, next) => {
   res.send("not found");
 });
-app.listen(process.env.PORT || 5000, () => {
+app.listen(port, () => {
   console.log(`server running on port: ${process.env.PORT}`);
 });
