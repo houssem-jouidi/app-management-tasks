@@ -37,7 +37,10 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/user", routerUser);
 app.use("/api/task", routertask);
 app.use((req, res, next) => {
-  res.send("not found");
+  res.status(404).send({
+    status: 404,
+    error: "Not found",
+  });
 });
 app.listen(port, () => {
   console.log(`server running on port: 3000`);

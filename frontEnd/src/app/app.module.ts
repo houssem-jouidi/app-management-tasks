@@ -16,7 +16,7 @@ import { MainComponent } from "./components/main/main.component";
 import { AddTaskComponent } from "./components/add-task/add-task.component";
 import { EditTaskComponent } from "./components/edit-task/edit-task.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-
+import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +38,13 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     NgbModule,
     FontAwesomeModule,
   ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
