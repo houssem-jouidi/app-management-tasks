@@ -2109,7 +2109,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "saveTask",
         value: function saveTask(task) {
           var headers = this.getauthHeadres();
-          return this.http.post("http://localhost:3000/api/task/add", task, {
+          return this.http.post("api/task/add", task, {
             headers: headers
           });
         }
@@ -2117,7 +2117,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "getalltask",
         value: function getalltask(query) {
           var h = this.getauthHeadres();
-          return this.http.post("http://localhost:3000/api/task/lists", query, {
+          return this.http.post("api/task/lists", query, {
             headers: h
           });
         }
@@ -2125,7 +2125,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "deleteTask",
         value: function deleteTask(id) {
           var h = this.getauthHeadres();
-          return this.http.delete("http://localhost:3000/api/task/delete/".concat(id), {
+          return this.http.delete("api/task/delete/".concat(id), {
             headers: h
           });
         }
@@ -2133,7 +2133,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "GetTaskById",
         value: function GetTaskById(id) {
           var h = this.getauthHeadres();
-          return this.http.get("http://localhost:3000/api/task/task/".concat(id), {
+          return this.http.get("api/task/task/".concat(id), {
             headers: h
           });
         }
@@ -2141,7 +2141,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "PutTaskById",
         value: function PutTaskById(id, updatetask) {
           var h = this.getauthHeadres();
-          return this.http.put("http://localhost:3000/api/task/edit/".concat(id), updatetask, {
+          return this.http.put("api/task/edit/".concat(id), updatetask, {
             headers: h
           });
         }
@@ -2218,12 +2218,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(UserService, [{
         key: "createUser",
         value: function createUser(user) {
-          return this.http.post("http://localhost:3000/api/user/register", user);
+          return this.http.post("api/user/register", user);
         }
       }, {
         key: "auth",
         value: function auth(user) {
-          return this.http.post("http://localhost:3000/api/user/auth", user);
+          return this.http.post("api/user/auth", user);
         }
       }, {
         key: "saveUser",

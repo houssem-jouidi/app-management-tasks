@@ -9,10 +9,10 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   createUser(user) {
-    return this.http.post("http://localhost:3000/api/user/register", user);
+    return this.http.post("api/user/register", user);
   }
   auth(user) {
-    return this.http.post("http://localhost:3000/api/user/auth", user);
+    return this.http.post("api/user/auth", user);
   }
   saveUser(token, user) {
     localStorage.setItem("Authtoken", token);

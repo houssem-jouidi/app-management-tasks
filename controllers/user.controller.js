@@ -1,7 +1,7 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const controler = {};
-
+const SECRET = "kfjngiurhguioghtiou";
 controler.postuser = async (req, res, next) => {
   try {
     let user = new User({
@@ -48,7 +48,7 @@ controler.getuser = async (req, res, next) => {
           });
         }
 
-        const token = jwt.sign({ user }, process.env.SECRET);
+        const token = jwt.sign({ user }, process.env.SECRET || SECRET);
         let returnuser = {
           id: user._id,
           name: user.username,

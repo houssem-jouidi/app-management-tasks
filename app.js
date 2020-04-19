@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 const MONGODB_URI =
   "mongodb+srv://houssem:houssem12345@cluster0-ctbj2.mongodb.net/test?retryWrites=true&w=majority";
 const SECRET = "kfjngiurhguioghtiou";
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI || MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -40,5 +40,5 @@ app.use((req, res, next) => {
   res.send("not found");
 });
 app.listen(port, () => {
-  console.log(`server running on port: ${process.env.PORT}`);
+  console.log(`server running on port: 3000`);
 });
