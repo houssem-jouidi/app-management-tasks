@@ -1,4 +1,6 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from "./../../environments/environment.prod";
+
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 @Injectable({
@@ -6,43 +8,20 @@ import { Injectable } from "@angular/core";
 })
 export class TaskService {
   constructor(private http: HttpClient) {}
-  getauthHeadres() {
-    const token = localStorage.getItem("Authtoken");
 
-    return new HttpHeaders({
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    });
-  }
   saveTask(task) {
-    const headers = this.getauthHeadres();
-
-    return this.http.post("api/task/add", task, {
-      headers: headers,
-    });
+    return this.http.post(`${environment.apiUrl}/task/add`, task);
   }
   getalltask(query) {
-    const h = this.getauthHeadres();
-    return this.http.post("api/task/lists", query, {
-      headers: h,
-    });
+    return this.http.post(`${environment.apiUrl}/task/lists`, query);
   }
   deleteTask(id) {
-    const h = this.getauthHeadres();
-    return this.http.delete(`api/task/delete/${id}`, {
-      headers: h,
-    });
+    return this.http.delete(`${environment.apiUrl}/task/delete/${id}`);
   }
   GetTaskById(id) {
-    const h = this.getauthHeadres();
-    return this.http.get(`api/task/task/${id}`, {
-      headers: h,
-    });
+    return this.http.get(`${environment.apiUrl}/task/task/${id}`);
   }
   PutTaskById(id, updatetask) {
-    const h = this.getauthHeadres();
-    return this.http.put(`api/task/edit/${id}`, updatetask, {
-      headers: h,
-    });
+    return this.http.put(`${environment.apiUrl}/task/edit/${id}`, updatetask);
   }
 }

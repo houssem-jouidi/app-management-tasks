@@ -10,6 +10,7 @@ import { UserService } from "src/app/services/user.service";
 })
 export class MainComponent implements OnInit {
   task;
+
   constructor(
     private taskSer: TaskService,
     private userSER: UserService,

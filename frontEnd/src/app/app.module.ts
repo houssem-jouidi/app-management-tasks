@@ -1,3 +1,4 @@
+import { httpInterceptorProviders } from "./interceptors/index";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
@@ -17,6 +18,8 @@ import { AddTaskComponent } from "./components/add-task/add-task.component";
 import { EditTaskComponent } from "./components/edit-task/edit-task.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
+import { MatNativeDateModule, MatInputModule } from "@angular/material";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +40,10 @@ import { HashLocationStrategy, LocationStrategy } from "@angular/common";
     ToastrModule.forRoot(),
     NgbModule,
     FontAwesomeModule,
+    MatDatepickerModule,
+
+    MatNativeDateModule,
+    MatInputModule,
   ],
   providers: [
     UserService,
@@ -44,6 +51,7 @@ import { HashLocationStrategy, LocationStrategy } from "@angular/common";
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
     },
+    httpInterceptorProviders,
   ],
   bootstrap: [AppComponent],
 })

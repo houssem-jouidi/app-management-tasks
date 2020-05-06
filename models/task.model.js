@@ -7,6 +7,12 @@ const taskSchema = mongoose.Schema({
   done: {
     type: Boolean,
   },
+  dateTask: {
+    type: Date,
+  },
+  desc: {
+    type: String,
+  },
   owner: {
     type: String,
     required: true,

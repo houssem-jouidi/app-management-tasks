@@ -17,7 +17,12 @@ export class RegisterComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const registered = this.userservice.isLogedin();
+    if (registered) {
+      this.router.navigate(["/main"]);
+    }
+  }
   onRegister() {
     const user = {
       username: this.username,

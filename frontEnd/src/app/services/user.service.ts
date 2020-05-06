@@ -1,3 +1,4 @@
+import { environment } from "./../../environments/environment.prod";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
@@ -9,10 +10,10 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   createUser(user) {
-    return this.http.post("api/user/register", user);
+    return this.http.post(`${environment.apiUrl}/user/register`, user);
   }
   auth(user) {
-    return this.http.post("api/user/auth", user);
+    return this.http.post(`${environment.apiUrl}/user/auth`, user);
   }
   saveUser(token, user) {
     localStorage.setItem("Authtoken", token);

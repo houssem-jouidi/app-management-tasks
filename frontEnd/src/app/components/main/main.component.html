@@ -4,34 +4,43 @@
   </button>
 </div>
 <h4 class="mb-5">My Task List</h4>
-<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Completed</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let t of task; let i = index">
-      <td>{{ i + 1 }}</td>
-      <td>{{ t.name }}</td>
-      <td *ngIf="t.done" style="color: green;">
-        <i class="fas fa-thumbs-up fa-2x"></i>
-      </td>
-      <td *ngIf="!t.done" style="color: red;">
-        <i class="fas fa-thumbs-down fa-2x"></i>
-      </td>
-      <td>
-        <button [routerLink]="['/Edit', t._id]" class="btn btn-warning mr-2">
-          <i class="fas fa-edit"></i> Edit
-        </button>
+<div>
+  <table *ngIf="task" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Completed</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of task; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ t.name }}</td>
+        <td>{{ t.dateTask | date }}</td>
+        <td *ngIf="t.done" style="color: green;">
+          <i class="fas fa-thumbs-up fa-2x"></i>
+        </td>
+        <td *ngIf="!t.done" style="color: red;">
+          <i class="fas fa-thumbs-down fa-2x"></i>
+        </td>
+        <td>
+          <button [routerLink]="['/Edit', t._id]" class="btn btn-warning mr-2">
+            <i class="fas fa-edit"></i> Edit
+          </button>
 
-        <button (click)="deleteTask(t._id)" class="btn btn-danger">
-          <i class="far fa-trash-alt"></i> Delete
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+          <button (click)="deleteTask(t._id)" class="btn btn-danger">
+            <i class="far fa-trash-alt"></i> Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="task?.length == 0">
+  <div class="jumbotron">
+    <p class="lead">There is no tasks</p>
+  </div>
+</div>

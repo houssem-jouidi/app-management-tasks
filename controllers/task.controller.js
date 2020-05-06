@@ -38,6 +38,8 @@ controler.posttask = async (req, res, next) => {
     let task = new Task({
       name: req.body.name,
       done: req.body.done,
+      dateTask: req.body.dateTask,
+      desc: req.body.desc,
       owner: req.body.owner,
     });
     const result = await task.save();
@@ -64,6 +66,8 @@ controler.EditTask = async (req, res, next) => {
         $set: {
           name: req.body.name,
           done: req.body.done,
+          dateTask: req.body.dateTask,
+          desc: req.body.desc,
           owner: req.body.owner,
         },
       },
