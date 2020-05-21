@@ -38,8 +38,10 @@ export class EditTaskComponent implements OnInit {
       done: form.done,
       owner: o,
       desc: form.desc,
-      dateTask: this.DateTASK,
+      dateTask: form.dateTask,
     };
+    console.log(updatetask);
+
     this.TaskSer.PutTaskById(this.id, updatetask).subscribe((data: any) => {
       if (data.success) {
         this.router.navigate(["/main"]);

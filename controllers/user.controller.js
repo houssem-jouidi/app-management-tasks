@@ -8,6 +8,7 @@ controler.postuser = async (req, res, next) => {
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
+      role: req.body.role,
     });
     const result = await user.save();
 
@@ -31,12 +32,14 @@ controler.getuser = async (req, res, next) => {
       if (err) {
         return res.json({
           success: false,
+          role: false,
           message: "Error, please try again",
         });
       }
       if (!user) {
         return res.json({
           success: false,
+          role: false,
           message: "Account Not Found",
         });
       }
@@ -44,6 +47,7 @@ controler.getuser = async (req, res, next) => {
         if (!ismatch) {
           return res.json({
             success: false,
+            role: false,
             message: "Password Invalid",
           });
         }
@@ -53,6 +57,7 @@ controler.getuser = async (req, res, next) => {
           id: user._id,
           name: user.username,
           email: user.email,
+          role: user.role,
           token,
         };
         return res.json({
@@ -64,6 +69,22 @@ controler.getuser = async (req, res, next) => {
     });
   } catch (error) {
     res.json({
+      err: error,
+    });
+  }
+};
+
+controler.getalluser = async (req, res, next) => {
+  try {
+    const users = await User.find();
+    res.json({
+      success: true,
+      message: "Success",
+      users,
+    });
+  } catch (error) {
+    res.json({
+      success: false,
       err: error,
     });
   }

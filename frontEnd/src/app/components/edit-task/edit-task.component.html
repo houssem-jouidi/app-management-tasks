@@ -1,76 +1,78 @@
-<div class="row">
-  <div class="col-md-7 mx-auto mt-3">
-    <form autocomplete="off" #f="ngForm" *ngFor="let item of Task">
-      <h4 class="text-center">Update Task</h4>
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 mx-auto mt-3">
+      <form autocomplete="off" #f="ngForm" *ngFor="let item of Task">
+        <h4 class="text-center">Update Task</h4>
 
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          #name
-          [(ngModel)]="item.name"
-          class="form-control"
-          placeholder=""
-          required
-          email
-        />
-      </div>
-      <div class="row">
-        <div class="col-md-6 mt-3">
-          <div class="form-group">
-            <label class="mr-2" for="Completed">Completed</label>
-            <input
-              type="checkbox"
-              name="done"
-              [(ngModel)]="item.done"
-              id="Completed"
-              placeholder=""
-              #done
-            />
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            #name
+            [(ngModel)]="item.name"
+            class="form-control"
+            placeholder=""
+            required
+            email
+          />
+        </div>
+        <div class="row">
+          <div class="col-md-6 mt-3">
+            <div class="form-group">
+              <label class="mr-2" for="Completed">Completed</label>
+              <input
+                type="checkbox"
+                name="done"
+                [(ngModel)]="item.done"
+                id="Completed"
+                placeholder=""
+                #done
+              />
+            </div>
+          </div>
+          <div class="col-md-6 text-right">
+            <mat-form-field>
+              <input
+                matInput
+                name="dateTask"
+                [matDatepicker]="picker"
+                [(ngModel)]="item.dateTask"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
           </div>
         </div>
-        <div class="col-md-6 text-right">
-          <mat-form-field>
-            <input
-              matInput
-              name="DateTASK"
-              [matDatepicker]="picker"
-              [(ngModel)]="DateTASK"
-              [placeholder]="item.dateTask | date"
-            />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="picker"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            class="form-control"
+            name="desc"
+            [(ngModel)]="item.desc"
+            id="description"
+            #desc
+            rows="3"
+          ></textarea>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea
-          class="form-control"
-          name="desc"
-          [(ngModel)]="item.desc"
-          id="description"
-          #desc
-          rows="3"
-        ></textarea>
-      </div>
-      <div class="text-right">
-        <button
-          type="submit"
-          (click)="onUpdatetask(f.value, item.owner, item.dateTask)"
-          class="btn btn-warning mr-2"
-        >
-          <i class="fas fa-save"></i> Update
-        </button>
-        <button type="button" routerLink="/main" class="btn btn-danger">
-          <i class="far fa-window-close"></i> Cancel
-        </button>
-      </div>
-    </form>
+        <div class="text-right">
+          <button
+            type="submit"
+            (click)="onUpdatetask(f.value, item.owner, item.dateTask)"
+            class="btn btn-warning mr-2"
+          >
+            <i class="fas fa-save"></i> Update
+          </button>
+          <button type="button" routerLink="/main" class="btn btn-danger">
+            <i class="far fa-window-close"></i> Cancel
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

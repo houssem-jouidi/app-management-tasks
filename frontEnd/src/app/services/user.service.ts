@@ -42,4 +42,8 @@ export class UserService {
       }, 100);
     });
   }
+
+  listUser() {
+    return this.http.get(`${environment.apiUrl}/user/list`);
+  }
 }

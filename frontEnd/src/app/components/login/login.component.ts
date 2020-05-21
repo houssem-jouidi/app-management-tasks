@@ -30,7 +30,11 @@ export class LoginComponent implements OnInit {
     this.userservice.auth(user).subscribe((resp: any) => {
       if (!resp.success) {
         this.toastr.error("Error", resp.message);
-      } else {
+      } else if (resp.returnuser.role === "admin") {
+        this.toastr.success("Success");
+        this.router.navigate(["/dashboard"]);
+        this.userservice.saveUser(resp.returnuser.token, resp.returnuser);
+      } else if (resp.returnuser.role === "user") {
         this.toastr.success("Success");
         this.router.navigate(["/main"]);
         this.userservice.saveUser(resp.returnuser.token, resp.returnuser);

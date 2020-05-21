@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" class="header">
+  <span (click)="opened = !opened" class="material-icons head">
+    menu
+  </span>
+  Dashboard
+  <span class="headright"></span>
+
+  <span>
+    Logout
+  </span>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [(opened)]="opened">
+    <mat-nav-list role="list">
+      <a mat-list-item> Users</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container">
+      <app-list-user></app-list-user>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

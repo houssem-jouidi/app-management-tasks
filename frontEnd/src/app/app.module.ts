@@ -18,8 +18,14 @@ import { AddTaskComponent } from "./components/add-task/add-task.component";
 import { EditTaskComponent } from "./components/edit-task/edit-task.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
-import { MatNativeDateModule, MatInputModule } from "@angular/material";
-import { MatDatepickerModule } from "@angular/material/datepicker";
+
+import { Ng2SearchPipeModule } from "ng2-search-filter";
+import { NgxPaginationModule } from "ngx-pagination";
+import { ShowTaskComponent } from "./components/show-task/show-task.component";
+import { DashboardComponent } from "./Admin/dashboard/dashboard.component";
+import { MaterialModule } from "./material/material.module";
+import { ToolbarComponent } from './Admin/toolbar/toolbar.component';
+import { ListUserComponent } from './Admin/list-user/list-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +36,10 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     MainComponent,
     AddTaskComponent,
     EditTaskComponent,
+    ShowTaskComponent,
+    DashboardComponent,
+    ToolbarComponent,
+    ListUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,10 +50,10 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     ToastrModule.forRoot(),
     NgbModule,
     FontAwesomeModule,
-    MatDatepickerModule,
 
-    MatNativeDateModule,
-    MatInputModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    MaterialModule,
   ],
   providers: [
     UserService,
