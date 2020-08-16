@@ -26,6 +26,7 @@ import { DashboardComponent } from "./Admin/dashboard/dashboard.component";
 import { MaterialModule } from "./material/material.module";
 import { ToolbarComponent } from './Admin/toolbar/toolbar.component';
 import { ListUserComponent } from './Admin/list-user/list-user.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { ListUserComponent } from './Admin/list-user/list-user.component';
     DashboardComponent,
     ToolbarComponent,
     ListUserComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
